@@ -1,2 +1,34 @@
+@bgcolor: #fff;
+@bgcolor-ad: #aaa;
+@text-color-main: #000;
+@text-color-ad: #333;
 
 h1,h2,h3,h4 {text-align: center!important;}
+html{
+  body{
+    background-color: @bgcolor;
+    color: @text-color-main;
+    padding: 0;
+    h2,h3,h4 {
+      color:@text-color-ad;
+    }
+    nav {
+      background-color: @bgcolor-ad!important;
+    }
+    section {
+      padding: 10px 0 10px;
+    }
+    section:nth-child(even){
+      background-color: @bgcolor-ad;
+    }
+    section.lottery-total-info *{
+      text-align: center;
+    }
+    button {
+      color: @text-color-main;
+    }
+    .card {
+      background-color: @bgcolor-ad;
+    }
+  }
+}
