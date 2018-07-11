@@ -4,6 +4,9 @@ import { Navbar } from './import/header.html';
 import { AboutArticle } from './import/AboutArticle.html'
 import { LotterySet } from './import/LotterySet.html'
 import { LotteryTotalInfo } from './import/LotteryTotalInfo.html'
+import { LotteryCreate } from './import/LotteryCreate.html'
+import { LotteryContent } from './import/LotteryContent.html'
+import { LotteryList } from './import/LotteryList.html'
 
 
 
