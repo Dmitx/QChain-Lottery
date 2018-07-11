@@ -4,12 +4,11 @@
 
 <body>
     {{> Navbar}}
-    {{> AboutArticle}}
-    {{> LotterySet}}
-    {{> LotteryTotalInfo}}
+    <template name="MainContent">
+        {{> drawPage}}
+    </template>
     {{> LotteryCreate}}
     {{> LotteryContent}}
-    {{> LotteryList}}
 
 </body>
 
