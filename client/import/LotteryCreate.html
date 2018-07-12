@@ -2,5 +2,74 @@
 <!--правая - Deployment - upload-->
 <!--TO GIT:  commang+k-->
 <template name="LotteryCreate">
+<section>
+    <table>
+        <tr>
+            <th style="width: 10%;"> </th>
+            <th style="width: 30%;">
+                <img src="/img/lot-1.jpg" class="card-img-top"/>
+            </th>
+            <th style="width:50%">
+                <div class="card-body" align="center">
+                    <div class="input-group input-group-lg">
+                        <div class="input-group-prepend">
+                            <span class="nata" id="inputGroup-sizing-lg">Название лотереи</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                    <br>
+                    <table>
+                        <td><label for="date">Дата начала: </label>
+                            <input type="date" id="date" name="date"/>
+                        </td>
+                        <td>
+                            <label for="date">Дата окончания: </label>
+                            <input type="date" id="date" name="date"/>
+                        </td>
+                    </table>
+                    <p>Описание<Br>
+                        <textarea name="comment" cols="115" rows="5"></textarea></p>
 
+                    <div class="input-group input-group-lg">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-lg">Призовой фонд</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <div class="input-group input-group-lg">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-lg">Число победителей</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <div class="input-group input-group-lg">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-lg">Процент выигрыша</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">ETH</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile02">
+                            <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" style="float: right ">Создать лотерею</button>
+                </div>
+            </th>
+            <th style="width: 10%;"> </th>
+        </tr>
+    </table>
+</section>
 </template>
