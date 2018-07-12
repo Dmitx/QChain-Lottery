@@ -346,6 +346,13 @@ $(document).ready(function(){
         web3.eth.getAccounts(function(err, res){
             myContract.getWinners(function(err, res){
                 console.log(res);
+                if(res.length > 0) {
+
+                } else {
+                    modal.find('h5').text("Победители");
+                    modal.find('.modal-body p').text("В этом розыгршще победители еще не определены");
+                    modal.modal();
+                }
             });
         });
     }
