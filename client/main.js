@@ -22,16 +22,14 @@ import './js/bootstrap.min.js';
 //     return
 //   }
 // });
+// app.r2ls.ru:8080/api/lottery-list
+// app.r2ls.ru:8080/api/lottery-create
+
 Template.LotteryList.onCreated(function(){
   var template = this;
-  let test_list = [
-    {"title":"Test 1","picture":"/img/lot_1.jpg","fund":"100","price":"1","date_end":"12-07-2018 22:00:00"},
-    {"title":"Test 1","picture":"/img/lot_1.jpg","fund":"100","price":"1","date_end":"12-07-2018 22:00:00"},
-  ];
-  TemplateVar.set(template, "lottery_list", "sdfgdfg");
 
   HTTP.call('GET', '/test/lottery-list.json', function(err,result){
-    let lottery_list = JSON.parse(result.content).lottery_list;
+    let lottery_list = JSON.parse(result.content);
     $('table.LotteryList tr td:first').closest('tr').remove();
     let rows = lottery_list.forEach(function(el){
       let row = "<tr><td>" + el.title + "</td><td>" + el.fund
@@ -40,6 +38,35 @@ Template.LotteryList.onCreated(function(){
     });
     TemplateVar.set(template, "lottery_list", rows);
   });
+});
+
+Template.LotteryCreate.events({
+  'click button'(event, instance) {
+    let template = Template.instance();
+    let lottery = {
+      content: JSON.stringify({
+        "title": $('input.lottery-title').val(),
+        "date_end": $('input.date-end').val(),
+        "description": $('textarea').text(),
+        "winner_count": $('input.winner-count').val(),
+        "gain": $('input.gain').val(),
+        "price": $('input.price').val(),
+        "user_hash": $('input.lottery-title').val(),
+        "transaction_hash": $('input.lottery-title').val(),
+        "picture": $('input.lottery-title').val()
+      })
+    };
+    console.log(lottery);
+    HTTP.post('http://app.r2ls.ru:8080/api/lottery-create', lottery, function(err,result){
+      console.log(result);
+    });
+    // web3.eth.getAccounts(function(err, res){
+    //   myContract.balanceOf(res[0],function(err, res){
+    //     TemplateVar.set(template, "tokens", res);
+    //   });
+    // });
+
+  }
 });
 
 // Template.MainContent.onCreated(function helloOnCreated() {

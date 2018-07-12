@@ -15,19 +15,11 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-lg">Название лотереи</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                            <input type="text" class="form-control lottery-title" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
                         </div>
                         <br>
-                        <table>
-                            <td>
-                                <label for="date">Дата начала: </label>
-                                <input type="date" id="date" name="date" />
-                            </td>
-                            <td>
-                                <label for="date">Дата окончания: </label>
-                                <input type="date" id="date" name="date" />
-                            </td>
-                        </table>
+                          <label for="date">Дата окончания: </label>
+                          <input type="date" id="date" class="date-end" name="date" />
                         <p>
                             Описание<br>
                             <textarea name="comment" cols="115" rows="5"></textarea>
@@ -35,30 +27,23 @@
 
                         <div class="input-group input-group-lg">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-lg">Призовой фонд</span>
-                            </div>
-                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
-                        </div>
-
-                        <div class="input-group input-group-lg">
-                            <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-lg">Число победителей</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                            <input type="text" class="form-control winner-count" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
                         </div>
 
                         <div class="input-group input-group-lg">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-lg">Процент выигрыша</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                            <input type="text" class="form-control gain" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
                         </div>
 
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">ETH</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <input type="text" class="form-control price" aria-label="Amount (to the nearest dollar)">
                         </div>
 
                         <div class="input-group mb-3">
