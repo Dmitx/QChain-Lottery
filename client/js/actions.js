@@ -330,6 +330,7 @@ $(document).ready(function(){
     var el = $(this),
       contract_addr = el.closest('tr').data('contract');
     contract_addr = "0x74e8aAf77D0BfEB2abE89f0b2d8218D379a6B24E";
+    contract_addr = "0xd757ebb746167495716ef3f11942c429203dbb75";
     var myContract = web3.eth.contract(q_abi).at(contract_addr);
     var modal = $("#infoModal");
     if(el.hasClass('buy-ticket')) {
@@ -347,7 +348,9 @@ $(document).ready(function(){
             myContract.getWinners(function(err, res){
                 console.log(res);
                 if(res.length > 0) {
-
+                    res.forEach(function(w){
+                        el.closest('td').append('<p>' + w + '</p>');
+                    });
                 } else {
                     modal.find('h5').text("Победители");
                     modal.find('.modal-body p').text("В этом розыгрше победители еще не определены");
@@ -360,7 +363,8 @@ $(document).ready(function(){
         web3.eth.getAccounts(function(err, res){
             myContract.finishLottery(function(err, res){
                 console.log(res);
-                if(res.length !== 'undefined') {
+                console.log(err);
+                if(res.length === true) {
                     modal.find('h5').text("Завершение розыгрыша");
                     modal.find('.modal-body p').text("Розыгрыш завершен, можете посмотреть победителей");
                     modal.modal();

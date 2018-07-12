@@ -119,6 +119,10 @@ Template.LotteryCreate.events({
                     });
 
                     // console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
+                } else {
+                    // modal.find('h5').text("Создание лотереи");
+                    // modal.find('.modal-body p').text("Не удалось создать лотерею.");
+                    // modal.modal();
                 }
             });
       //.then(function(newContractInstance){
