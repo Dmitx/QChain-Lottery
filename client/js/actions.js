@@ -342,7 +342,7 @@ $(document).ready(function(){
             });
         });
     }
-    if(el.hasClass('show-winners')) {
+    else if(el.hasClass('show-winners')) {
         web3.eth.getAccounts(function(err, res){
             myContract.getWinners(function(err, res){
                 console.log(res);
@@ -350,7 +350,23 @@ $(document).ready(function(){
 
                 } else {
                     modal.find('h5').text("Победители");
-                    modal.find('.modal-body p').text("В этом розыгршще победители еще не определены");
+                    modal.find('.modal-body p').text("В этом розыгрше победители еще не определены");
+                    modal.modal();
+                }
+            });
+        });
+    }
+    else if(el.hasClass('finish-lottery')) {
+        web3.eth.getAccounts(function(err, res){
+            myContract.finishLottery(function(err, res){
+                console.log(res);
+                if(res.length !== 'undefined') {
+                    modal.find('h5').text("Завершение розыгрыша");
+                    modal.find('.modal-body p').text("Розыгрыш завершен, можете посмотреть победителей");
+                    modal.modal();
+                } else {
+                    modal.find('h5').text("Завершение розыгрыша");
+                    modal.find('.modal-body p').text("Не удалось завершить проведение розыгрыша");
                     modal.modal();
                 }
             });
