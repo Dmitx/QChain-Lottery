@@ -331,6 +331,8 @@ $(document).ready(function(){
       contract_addr = el.closest('tr').data('contract');
     contract_addr = "0x74e8aAf77D0BfEB2abE89f0b2d8218D379a6B24E";
     contract_addr = "0xd757ebb746167495716ef3f11942c429203dbb75";
+    contract_addr = "0x804df79df2073b40e662a52d8a091d3af999c8b8";
+    contract_addr = "0x5f3f60fddd37a14d87c7e1cb8dbeb333970da8ea";
     var myContract = web3.eth.contract(q_abi).at(contract_addr);
     var modal = $("#infoModal");
     if(el.hasClass('buy-ticket')) {
