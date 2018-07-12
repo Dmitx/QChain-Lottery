@@ -1,2 +1,4 @@
 node_modules/
 .idea/
+.ftpconfig
+public/img/logo.png
