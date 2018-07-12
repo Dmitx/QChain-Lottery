@@ -2,7 +2,7 @@
 <!--правая - Deployment - upload-->
 <!--TO GIT:  commang+k-->
 <template name="LotteryCreate">
-<section>
+<section id="lottery-create">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4">
@@ -19,7 +19,7 @@
                         </div>
                         <br>
                           <label for="date">Дата окончания: </label>
-                          <input type="date" id="date" class="date-end" name="date" />
+                          <input type="datetime-local" id="date" class="date-end" name="date" />
                         <p>
                             Описание<br>
                             <textarea name="comment" cols="115" rows="5"></textarea>
@@ -45,14 +45,14 @@
                             </div>
                             <input type="text" class="form-control price" aria-label="Amount (to the nearest dollar)">
                         </div>
-
+<!--
                         <div class="input-group mb-3">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="inputGroupFile02">
                                 <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
                             </div>
                         </div>
-
+-->
                         <button type="button" class="btn btn-secondary btn-lg btn-block" style="float: right ">Создать лотерею</button>
 
                     </div>

@@ -30,11 +30,11 @@ import './js/bootstrap.min.js';
 Template.LotteryList.onCreated(function(){
   var template = this;
 
-  HTTP.call('GET', '/test/lottery-list.json', function(err,result){
+  HTTP.call('GET', 'http://app.r2ls.ru:8080/api/lotteries', function(err,result){
     let lottery_list = JSON.parse(result.content);
     $('table.LotteryList tr td:first').closest('tr').remove();
     let rows = lottery_list.forEach(function(el){
-      let row = "<tr data-contract=\"" + el.contract + ""\"><td>" + el.title + "</td><td>" + el.fund
+      let row = "<tr data-contract=\"" + el.contract + "\"><td>" + el.title + "</td><td>" + el.fund
       + "</td><td>" + el.price + "</td><td>" + el.date_end
       + "</td><td><a href='#' class='btn btn-success ajax buy-ticket'>Buy</a></td><td>"
       + "<a href='#' class='btn btn-info ajax show-winners'>Show</a></td></tr>";
@@ -63,10 +63,11 @@ Template.LotteryCreate.events({
     web3.eth.getAccounts(function(err, res){
       lottery.user_hash = res[0];
       lottery.transaction_hash = res[0];
+      // content: JSON.stringify(lottery),
       let data = {
         content: JSON.stringify(lottery)
       };
-      HTTP.post('http://app.r2ls.ru:8080/api/lottery-create', data, function(err,result){
+      HTTP.post('http://app.r2ls.ru:8080/api/lotteries', data, function(err,result){
         console.log(result);
       });
     });
