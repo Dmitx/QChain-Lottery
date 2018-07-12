@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Navbar } from './import/header.html';
+import { Footer } from './import/Footer.html';
 import { AboutArticle } from './import/AboutArticle.html'
 import { LotterySet } from './import/LotterySet.html'
 import { LotteryTotalInfo } from './import/LotteryTotalInfo.html'
@@ -37,4 +38,3 @@ Template.MainContent.drawPage = function () {
 //     }
 // });
 // import './style/style.import.less';
-
