@@ -1,0 +1,5 @@
+{"lottery_list":[
+  {"title":"Test 1","picture":"/img/lot_1.jpg","fund":"100","price":"1","date_end":"12-07-2018 22:00:00"},
+  {"title":"Test 2","picture":"/img/lot_2.jpg","fund":"80","price":"2","date_end":"13-07-2018 22:00:00"},
+  {"title":"Test 3","picture":"/img/lot_3.jpg","fund":"180","price":"6","date_end":"14-07-2018 22:00:00"}
+]}
