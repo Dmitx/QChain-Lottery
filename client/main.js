@@ -15,7 +15,7 @@ import { MainPage } from './pages/MainPage.html'
 
 
 import './main.html';
-import './js/contract.js';
+import {q_abi} from './js/contract.js';
 import './js/actions.js';
 import './style/bootstrap.min.css';
 import './js/bootstrap.min.js';
@@ -64,11 +64,28 @@ Template.LotteryCreate.events({
       lottery.user_hash = res[0];
       lottery.transaction_hash = res[0];
       // content: JSON.stringify(lottery),
-      let data = {
-        content: JSON.stringify(lottery)
-      };
-      HTTP.post('http://app.r2ls.ru:8080/api/lotteries', data, function(err,result){
-        console.log(result);
+      // let data = {
+      //   content: JSON.stringify(lottery)
+      // };
+      var myContract = web3.eth.contract(q_abi);
+      myContract.deploy({
+        data: q_bin,
+        arguments: [
+          lottery.title,
+          lottery.price,
+          lottery.date_end,
+          lottery.winner_count,
+          lottery.gain
+        ]
+      }).then(function(newContractInstance){
+        lottery.transaction_hash = newContractInstance.options.address;
+        let data = {
+          content: JSON.stringify(lottery)
+        };
+        HTTP.post('http://app.r2ls.ru:8080/api/lotteries', data, function(err,result){
+          console.log(result);
+        });
+          console.log(newContractInstance.options.address) // instance with the new contract address
       });
     });
   }
