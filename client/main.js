@@ -15,6 +15,8 @@ import { MainPage } from './pages/MainPage.html'
 
 
 import './main.html';
+import './js/contract.js';
+import './js/actions.js';
 import './style/bootstrap.min.css';
 import './js/bootstrap.min.js';
 // Template.LotteryList.helpers({
@@ -32,8 +34,10 @@ Template.LotteryList.onCreated(function(){
     let lottery_list = JSON.parse(result.content);
     $('table.LotteryList tr td:first').closest('tr').remove();
     let rows = lottery_list.forEach(function(el){
-      let row = "<tr><td>" + el.title + "</td><td>" + el.fund
-      + "</td><td>" + el.price + "</td><td>" + el.date_end + "</td></tr>";
+      let row = "<tr data-contract=\"" + el.contract + ""\"><td>" + el.title + "</td><td>" + el.fund
+      + "</td><td>" + el.price + "</td><td>" + el.date_end
+      + "</td><td><a href='#' class='btn btn-success ajax buy-ticket'>Buy</a></td><td>"
+      + "<a href='#' class='btn btn-info ajax show-winners'>Show</a></td></tr>";
       $('table.LotteryList').append(row);
     });
     TemplateVar.set(template, "lottery_list", rows);
@@ -43,29 +47,29 @@ Template.LotteryList.onCreated(function(){
 Template.LotteryCreate.events({
   'click button'(event, instance) {
     let template = Template.instance();
+    // content: JSON.stringify({
+    // "user_hash": $('input.lottery-title').val(),
+    // "transaction_hash": $('input.lottery-title').val(),
+    // })
     let lottery = {
-      content: JSON.stringify({
         "title": $('input.lottery-title').val(),
         "date_end": $('input.date-end').val(),
         "description": $('textarea').text(),
         "winner_count": $('input.winner-count').val(),
         "gain": $('input.gain').val(),
         "price": $('input.price').val(),
-        "user_hash": $('input.lottery-title').val(),
-        "transaction_hash": $('input.lottery-title').val(),
         "picture": $('input.lottery-title').val()
-      })
     };
-    console.log(lottery);
-    HTTP.post('http://app.r2ls.ru:8080/api/lottery-create', lottery, function(err,result){
-      console.log(result);
+    web3.eth.getAccounts(function(err, res){
+      lottery.user_hash = res[0];
+      lottery.transaction_hash = res[0];
+      let data = {
+        content: JSON.stringify(lottery)
+      };
+      HTTP.post('http://app.r2ls.ru:8080/api/lottery-create', data, function(err,result){
+        console.log(result);
+      });
     });
-    // web3.eth.getAccounts(function(err, res){
-    //   myContract.balanceOf(res[0],function(err, res){
-    //     TemplateVar.set(template, "tokens", res);
-    //   });
-    // });
-
   }
 });
 
